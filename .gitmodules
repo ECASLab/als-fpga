@@ -1,0 +1,3 @@
+[submodule "tools/vtr"]
+	path = tools/vtr
+	url = git@github.com:verilog-to-routing/vtr-verilog-to-routing.git

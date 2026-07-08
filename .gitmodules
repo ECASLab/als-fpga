@@ -5,3 +5,6 @@
 	path = tools/f4pga
 	url = git@github.com:ECASLab/f4pga.git
 	branch = dev/als-f4pga
+[submodule "tools/f4pga-examples"]
+	path = tools/f4pga-examples
+	url = https://github.com/chipsalliance/f4pga-examples

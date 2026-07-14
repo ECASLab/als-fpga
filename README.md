@@ -7,9 +7,11 @@ An [F4PGA](https://f4pga.org/)-based flow for Xilinx 7-Series FPGAs (`xc7`) with
 ```
 als-fpga/
 ├── tools/
-│   ├── f4pga/          
+│   ├── f4pga/           # Modified F4PGA 
 │   ├── vtr/             
-│   └── f4pga-examples/  
+│   └── f4pga-examples/  # Base toolchain installer
+├── setup/
+│   └── activate.sh      # Sourceable environment activation script
 └── README.md
 ```
 
@@ -115,4 +117,14 @@ Then invoke it as `vtr-ace` wherever you need power estimation: To check it is w
  
 ```bash
 vtr-ace --help
+```
+
+## Environment SETUP
+
+For daily work, this repo includes `setup/activate.sh`, which activates the conda environment, checks that the modified `f4pga` is the one in use, and makes sure `vtr-ace` is on `PATH`, all in one command, with a readable summary.
+ 
+It must be **sourced**, not executed, since it needs to change `PATH` and activate conda in your current shell:
+
+```bash
+source setup/activate.sh
 ```

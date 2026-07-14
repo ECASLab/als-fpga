@@ -20,6 +20,17 @@ als-fpga/
 - ~10–15 GB of free disk for the toolchain environment.
 - Miniconda is downloaded during installation.
 
+## Clone with submodules
+ 
+The submodules are declared with SSH URLs, so make sure your SSH key is set up with GitHub before cloning.
+ 
+```bash
+git clone git@github.com:ECASLab/als-fpga.git
+cd als-fpga
+ 
+git submodule update --init --recursive
+```
+
 ## Install the base toolchain
 
 Go to the f4pga-examples directory:
@@ -73,3 +84,35 @@ pip install -e tools/f4pga/f4pga    # adjust the path depending on where you are
  
 > You should see it uninstall `f4pga 0.0.0+e1cd038f0` (upstream) and install `f4pga 0.0.0+8bfab9dc`.
 
+## Install VTR
+
+Go to the VTR directory:
+
+```bash
+cd tools/vtr
+```
+
+Install system dependencies:
+
+```bash
+sudo ./install_apt_packages.sh
+``` 
+
+Install VTR:
+
+```bash
+make -j"$(nproc)"
+```
+
+`ACE`'s binary lands at `tools/vtr/build/ace2/ace`. Create a symlink under a different name on the local binary directory:
+
+```bash
+mkdir -p ~/.local/bin
+ln -sf "$PWD/build/ace2/ace" ~/.local/bin/vtr-ace
+```
+
+Then invoke it as `vtr-ace` wherever you need power estimation: To check it is working use:
+ 
+```bash
+vtr-ace --help
+```
